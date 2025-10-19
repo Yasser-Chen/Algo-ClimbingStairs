@@ -3,14 +3,19 @@
  * @return {number}
  */
 var climbStairs = function (n) {
-    if (n == 0) return 1;
-    else if (n < 0) return 0;
-
-    return climbStairs(n - 1) + climbStairs(n - 2);
+    let solved = {
+        "-2": 0, // skip
+        "-1": 1, // skip
+        0: 1,
+    }, sum = 0;
+    for (let a = 0; a < n; a++) {
+        sum = solved[a - 1] + solved[a - 2];
+        solved[a] = sum;
+    }
+    return sum;
 };
 
 console.log(climbStairs(5)); //8
-
 
 // 5 : 221 122 212 1112 1211 1121 2111 11111
 // 4 : 22  112 121 211 1111
