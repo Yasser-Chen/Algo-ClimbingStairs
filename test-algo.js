@@ -3,21 +3,13 @@
  * @return {number}
  */
 var climbStairs = function (n) {
-    if (n == 45) return 1134903170;
-    var validAnswers = 0;
+    if (n == 0) return 1;
+    else if (n < 0) return 0;
 
-    function crawler(startPosition) {
-        if (startPosition == n) { validAnswers++; return 1; }
-        else if (startPosition > n) return;
-
-        crawler(startPosition + 1);
-        crawler(startPosition + 2);
-    }
-
-    crawler(0);
-
-    return validAnswers;
+    return climbStairs(n - 1) + climbStairs(n - 2);
 };
+
+console.log(climbStairs(5)); //8
 
 
 // 5 : 221 122 212 1112 1211 1121 2111 11111
